@@ -120,9 +120,11 @@ class AllPostsAdd extends StatefulSnippet {
     }
 
 
-    "#post-display" #> bindMapper(post) _ &
+    "*" #> {bindMapper(post,{
       renderTags(PostTag.findAll(By(PostTag.post, post.id)).map(_.tag.get)) &
       "type=submit" #> SHtml.onSubmitUnit(() => process)
+    }) _}
+
   }
 }
 
@@ -147,9 +149,10 @@ class AllPostsEdit extends StatefulSnippet {
       }
     }
 
-    "#post-display" #> bindMapper(post) _ &
+    "*" #> {bindMapper(post,{
       renderTags(PostTag.findAll(By(PostTag.post, post.id)).map(_.tag.get)) &
       "type=submit" #> SHtml.onSubmitUnit(() => process)
+    }) _}
   }
 }
 

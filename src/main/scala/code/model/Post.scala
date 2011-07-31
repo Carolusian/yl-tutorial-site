@@ -47,7 +47,7 @@ class Post extends LongKeyedMapper[Post] with IdPK {
     }
   }
 
-  object content extends MappedTextarea(this, 1000) {
+  object content extends MappedTextarea(this, 65535) {
     override def validations = {
       def notNull(txt: String) = {
         if (txt == "")
@@ -60,9 +60,11 @@ class Post extends LongKeyedMapper[Post] with IdPK {
     }
 
     override def asHtml:Node = {
-      Unparsed(TextileParser.toHtml(this.get.toString).toString)
+      Unparsed(this.get.toString)
     }
   }
+
+  object isPublished extends MappedBoolean(this)
 
   object postedAt extends MappedDate(this) {
     override def validations = {

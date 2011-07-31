@@ -7,3 +7,6 @@
 /project/target
 /project/plugins/project
 /project/plugins/target
+/target
+/.idea
+/.idea_modules

@@ -24,7 +24,7 @@ class Boot {
       val vendor =
         new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
           Props.get("db.url") openOr
-            "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
+            "jdbc:h2:yabe-tutorial.db;AUTO_SERVER=TRUE",
           Props.get("db.user"), Props.get("db.password"))
 
       LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
@@ -141,42 +141,22 @@ class Boot {
 
   //Init user data, one super user and one normal user.
   def initUsers() {
-    if (isDemoSuperUserExist == false) {
+    if (isSuperUserExist == false) {
       val superUser = User.create
         .firstName("Super")
         .lastName("Demo")
         .email("super@demo.com")
         .password("demouser")
         .superUser(true)
-        .isDemo(true)
+        .isDemo(false)
         .validated(true)
 
       superUser.save
     }
-
-    if (isDemoNormalUserExist == false) {
-      val normalUser = User.create
-        .firstName("Normal")
-        .lastName("Demo")
-        .email("normal@demo.com")
-        .password("demouser")
-        .superUser(false)
-        .isDemo(true)
-        .validated(true)
-
-      normalUser.save
-    }
   }
 
-  def isDemoSuperUserExist() = {
-    User.count(By(User.isDemo, true), By(User.superUser, true)) match {
-      case x if x > 0 => true
-      case _ => false
-    }
-  }
-
-  def isDemoNormalUserExist() = {
-    User.count(By(User.isDemo, true), NotBy(User.superUser, true)) match {
+  def isSuperUserExist() = {
+    User.count(By(User.superUser, true)) match {
       case x if x > 0 => true
       case _ => false
     }

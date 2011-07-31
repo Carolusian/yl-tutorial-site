@@ -8,7 +8,7 @@
 				<div class="objectForm">
 					<div class="lift:msgs?showAll=true"></div>
 					<form class="lift:AllPostsAdd?form=post">
-                        <div id="post-display">
+
                             <div class="crudField crud_text">
                                 <label for="object_title"> Title </label>
                                 <input id="object_title" class="mb:title" type="text" name="" value="" size="50" />
@@ -32,28 +32,26 @@
                             </div>
 
                             <div class="crudField crud_relation">
-                                <label for="object_author"> Author </label>
-                                <select id="object_author" name="author_id" class="mb:author">
-
-                                </select>
-                                <span class="crudHelp"> Required. </span>
+                                <label for="object_publish"> Publish </label>
+                                <input type="checkbox" id="object_publish" name="Publish" class="mb:isPublished" />
                             </div>
-                        </div>
+                            <div class="crudField crud_relation">
 
-                        <div class="crudField crud_relation">
+                                <label for="tags">
+                                    Tags set
+                                </label>
 
-                            <label for="tags">
-                                Tags set
-                            </label>
-
-                            <div class="tags-list">
-                                <span class="tags-list-item">
-                                    <span id="1" onclick="toggle(this)" class="tag selected">Play</span>
-                                    <input id="h1" type="hidden" name="tags_name" value=""/>
-                                </span>
-                                <input type="hidden" id="tags_name_list" name="tags_name_list" value="" />
+                                <div class="tags-list">
+                                    <span class="tags-list-item">
+                                        <span id="1" onclick="toggle(this)" class="tag selected">Play</span>
+                                        <input id="h1" type="hidden" name="tags_name" value=""/>
+                                    </span>
+                                    <input type="hidden" id="tags_name_list" name="tags_name_list" value="" />
+                                </div>
                             </div>
-                        </div>
+
+
+
 
                         <p class="crudButtons">
 							<input type="submit" name="_save" value="Save" onclick="return prepareTags();" />

@@ -7,6 +7,18 @@
 <link rel="shortcut icon" type="image/png" href="/static/images/favicon.png" />
 <script type="text/javascript" language="javascript" src="/static/javascripts/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" language="javascript" src="/static/javascripts/jquery.tools-1.2.5.toolbox.expose.min.js"></script>
+
+<!-- scripts for highlighter -->
+<script type="text/javascript" src="/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/shBrushScala.js"></script>
+<script type="text/javascript" src="/static/syntaxhighlighter/shBrushBash.js"></script>
+<!-- CSS for highlighter -->
+<link href="/static/syntaxhighlighter/shCore.css" rel="stylesheet" type="text/css" />
+<link href="/static/syntaxhighlighter/shThemeDefault.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .video {border:2px #ccc solid;}
+</style>
 </head>
 <body>
 
@@ -33,6 +45,8 @@
         <a href="http://liftweb.net/">liftweb framework</a>
         as a tutorial application.
     </p>
-
+    <script type="text/javascript">
+       SyntaxHighlighter.all()
+    </script>
 </body>
 </html>

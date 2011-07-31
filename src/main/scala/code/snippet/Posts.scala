@@ -13,7 +13,7 @@ import MapperBinder._
 
 class Posts {
   def listLatest: CssSel = {
-    val latestPost = Post.find(OrderBy(Post.id, Descending))
+    val latestPost = Post.find(OrderBy(Post.id, Descending), By(Post.isPublished, true))
     //"*" #> bindMapper()
 
     latestPost match {
@@ -27,11 +27,11 @@ class Posts {
   }
 
   def listOlder: CssSel = {
-    val latestPost = Post.find(OrderBy(Post.id, Descending))
+    val latestPost = Post.find(OrderBy(Post.id, Descending),By(Post.isPublished, true))
 
     latestPost match {
       case Full(p) => {
-        val olderPosts = Post.findAll(OrderBy(Post.id, Descending)).
+        val olderPosts = Post.findAll(OrderBy(Post.id, Descending), By(Post.isPublished, true)).
           filter(p.id != _.id)
 
         renderPostsList(olderPosts)
