@@ -1,4 +1,4 @@
-name := "yabe-lift"
+name := "learn-lift"
 
 scalaVersion := "2.8.1"
 
